@@ -41,3 +41,93 @@ if ((e.KeyChar >= 32 && e.KeyChar <= 64) || (e.KeyChar >= 91 && e.KeyChar <= 96)
  {
      MessageBox.Show("No puede ser nulo", "Error", MessageBoxButtons.RetryCancel, MessageBoxIcon.Error);
  }
+
+// funcionalidad de combo box
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+namespace Practica
+{
+    public partial class Form1 : Form
+    {
+        public Form1()
+        {
+            InitializeComponent();
+        }
+
+        // Evento de clic en el label lbl1
+        private void lbl1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        // Evento de carga del formulario Form1
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            // Deshabilitar los campos de texto txt1 y txt2 al cargar el formulario
+            txt1.Enabled = false;
+            txt2.Enabled = false;
+        }
+
+        // Evento de clic en el botón button1
+        private void button1_Click(object sender, EventArgs e)
+        {
+            double kg, lib, gr;
+            
+            // Capturar el valor ingresado en Entnum y convertirlo a double
+            kg = double.Parse(Entnum.Text);
+            // Validar que el valor esté dentro del rango permitido
+            if (kg <= 0 || kg > 1000)
+            {
+                // Mostrar un mensaje de error si el valor está fuera del rango permitido
+                MessageBox.Show("No puede ser negativo ni cero, ni mayor a 1,000");
+                // Limpiar el campo Entnum
+                Entnum.Text = "";
+            }
+            else
+            {
+                // Validar si se ha seleccionado un artículo en el ComboBox Articulo
+                if (Articulo.SelectedIndex == -1)
+                {
+                    // Mostrar un mensaje de error si no se ha seleccionado un artículo
+                    MessageBox.Show("Debe seleccionar un articulo");
+                }
+                else
+                {
+                    // Calcular el peso en libras y gramos según el artículo seleccionado
+                    if (Articulo.SelectedItem.Equals("Ladrillo") || Articulo.SelectedItem.Equals("Bolsa de cemento") || Articulo.SelectedItem.Equals("Piedrin"))
+                    {
+                        lib = kg * 2.20462;
+                        gr = kg * 1000;
+                        txt1.Text = lib.ToString();
+                        txt2.Text = gr.ToString();
+                    }
+                }
+            }
+        }
+
+        // Evento de clic en el botón button2
+        private void button2_Click(object sender, EventArgs e)
+        {
+            // Limpiar los campos Entnum, txt1 y txt2, y enfocar el cursor en Entnum
+            Entnum.Text = "";
+            txt1.Text = "";
+            txt2.Text = "";
+            Entnum.Focus();
+        }
+
+        // Evento de clic en el botón button3
+        private void button3_Click(object sender, EventArgs e)
+        {
+            // Cerrar el formulario
+            this.Close();
+        }
+    }
+}
