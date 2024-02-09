@@ -1,0 +1,28 @@
+// VALIDAR que no entren LETRAS KEYPRESS para valores double
+ if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && e.KeyChar != '.')
+ {
+     MessageBox.Show("Solo números y un punto decimal son permitidos", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+     e.Handled = true;
+ }
+ else if (e.KeyChar == '.' && (sender as TextBox).Text.Contains('.'))
+ {
+     MessageBox.Show("Solo se permite un punto decimal", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+     e.Handled = true;
+ }
+//Validar que no entren  numero Key Press
+if ((e.KeyChar >= 32 && e.KeyChar <= 64) || (e.KeyChar >= 91 && e.KeyChar <= 96) || (e.KeyChar >= 123 && e.KeyChar <= 255))
+            {
+                MessageBox.Show("Solo letras", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                e.Handled = true;
+                return;
+            }
+
+// validar que no entren letras para valores entro
+
+  if (!(char.IsNumber(e.KeyChar)) && (e.KeyChar != (char)Keys.Back))
+  {
+      MessageBox.Show("Solo se permiten numeros", "Advertencia", MessageBoxButtons.OK, 
+          MessageBoxIcon.Exclamation);
+      e.Handled = true;
+      return;
+  }
