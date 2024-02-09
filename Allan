@@ -26,3 +26,11 @@ if ((e.KeyChar >= 32 && e.KeyChar <= 64) || (e.KeyChar >= 91 && e.KeyChar <= 96)
       e.Handled = true;
       return;
   }
+// try catch de validacion
+ try
+  {
+     }
+ catch (Exception)
+ {
+     MessageBox.Show("No puede ser nulo", "Error", MessageBoxButtons.RetryCancel, MessageBoxIcon.Error);
+ }
