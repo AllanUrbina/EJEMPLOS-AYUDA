@@ -1,3 +1,10 @@
+
+//Menu strip se llama el mdi 
+// estilo de ventana IsmdiCOntainer
+F1.Ismdicontainer=true
+
+
+
 // VALIDAR que no entren LETRAS KEYPRESS para valores double
  if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && e.KeyChar != '.')
  {
